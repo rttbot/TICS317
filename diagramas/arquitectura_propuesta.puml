@@ -1,0 +1,19 @@
+@startuml
+cloud "Cloud Infrastructure" {
+    package "Microservicios" {
+        [Servicio de Reservas] as BookingService
+        [Servicio de Precios] as PricingService
+        [Servicio de Analytics] as AnalyticsService
+        [Servicio de Canales] as ChannelService
+        [Servicio de PMS] as PMSService
+    }
+    
+    queue "Message Bus" as MB
+    
+    BookingService <--> MB
+    PricingService <--> MB
+    AnalyticsService <--> MB
+    ChannelService <--> MB
+    PMSService <--> MB
+}
+@enduml 

@@ -1,0 +1,124 @@
+\chapterimage{Pictures/darwin.png}
+\chapter{Introducción}
+\vspace{140px}
+
+\begin{flushright}
+    \textit{Las ventajas de tener una buena arquitectura siempre debe ser satisfacer las necesidades de los stakeholders y entregar valor, además de su \underline{fácil integración}, \underline{flexibilidad}, su \underline{simple operación} y \underline{confiabilidad}. Todo sistema construido por el humano tiene una arquitectura la cual se define como una descripción abstracta de entidades de un sistema y sus relaciones, lo cual se traduce en un conjunto de decisiones que deben ser documentadas.}
+\end{flushright}
+
+\section{La Importancia de la Arquitectura de Sistemas}
+
+La relevancia de una arquitectura de sistemas robusta se hace evidente cuando analizamos casos reales de la industria tecnológica moderna. Durante el primer Prime Day, Amazon experimentó un colapso debido a la alta demanda, un evento que subrayó la importancia de diseñar sistemas escalables. Este incidente no solo afectó las ventas inmediatas sino también la confianza de los usuarios y la reputación de la empresa. La respuesta de Amazon fue rediseñar su arquitectura para manejar peaks de carga extremos, implementando sistemas de auto-escalado y mejorando su infraestructura de manera significativa.
+
+Netflix ofrece otro ejemplo ilustrativo de la importancia de la arquitectura de sistemas. En 2008, la compañía sufrió una interrupción importante en su centro de datos que afectó la distribución de DVDs durante tres días. Este incidente llevó a Netflix a repensar completamente su arquitectura, migrando a la nube y desarrollando herramientas como el "Chaos Monkey" para probar la resiliencia de sus sistemas. Hoy, Netflix puede transmitir contenido a más de 200 millones de suscriptores simultáneamente, un logro que sería imposible sin una arquitectura bien diseñada. Netflix utiliza microservicios y AWS para manejar su infraestructura, lo que permite una escalabilidad y resiliencia excepcionales. El uso de un API Gateway y servicios como Zuul facilita el enrutamiento dinámico y la seguridad, mientras que herramientas como Hystrix aseguran la resiliencia al aislar fallos.
+
+Un sistema, en su esencia más fundamental, es más que la suma de sus partes. Cuando hablamos de sistemas, nos referimos a un conjunto de componentes que interactúan entre sí para servir a un propósito común. Esta interacción genera lo que llamamos "emergencia": comportamientos y propiedades que no existen en los componentes individuales, sino que surgen de su interacción. Por ejemplo, la capacidad de Google para procesar miles de millones de búsquedas diarias no es una propiedad de ningún servidor individual, sino que emerge de la interacción coordinada de múltiples centros de datos y sistemas distribuidos. La emergencia se refiere a lo que aparece o emerge cuando un sistema opera, es decir, su funcionalidad. Las funciones emergen de las interacciones entre los componentes del sistema, como se observa en sistemas complejos como los automóviles, donde funciones deseables y no deseables pueden surgir inesperadamente.
+
+La arquitectura de sistemas moderna debe considerar aspectos que van más allá de la funcionalidad básica. En el sector financiero, por ejemplo, los sistemas deben mantener una disponibilidad cercana al 100\% mientras procesan millones de transacciones por segundo. El sistema SWIFT, que maneja la mayoría de las transferencias internacionales, procesa más de 42 millones de mensajes diarios, requiriendo una arquitectura que garantice no solo el rendimiento, sino también la seguridad y la trazabilidad de cada transacción.
+
+En el sector salud, la arquitectura de sistemas enfrenta desafíos únicos. Los sistemas deben manejar datos sensibles de pacientes, cumplir con regulaciones estrictas como HIPAA, y estar disponibles en situaciones de emergencia. El caso del NHS (National Health Service) en Reino Unido durante el ataque de ransomware WannaCry en 2017 demostró cómo una arquitectura vulnerable puede poner en riesgo vidas humanas. Este incidente llevó a una reevaluación completa de la arquitectura de sistemas de salud a nivel nacional.
+
+La emergencia en sistemas complejos puede manifestarse de formas inesperadas. Durante la crisis financiera de 2008, los sistemas automatizados de trading contribuyeron a una espiral de ventas que amplificó la volatilidad del mercado. Este ejemplo muestra cómo la interacción entre sistemas aparentemente bien diseñados puede generar comportamientos emergentes no deseados a escala sistémica. Como resultado, las arquitecturas modernas de sistemas financieros ahora incluyen "circuit breakers" y otros mecanismos de control para prevenir tales escenarios.
+
+\section{Fundamentos de Arquitectura de Sistemas}
+
+Un sistema es un conjunto de entidades y sus relaciones, cuya funcionalidad es mayor que la suma de las partes. Esta definición fundamental nos ayuda a entender que un producto no necesariamente es un sistema (e.g.: pasta) y un sistema no siempre es un producto (e.g.: sistema solar). Las funciones son lo que el sistema hace: sus acciones y salidas, y estas funciones emergen de las interacciones entre los componentes del sistema. La descomposición de un sistema complejo, como un smartphone, en subsistemas y componentes, es esencial para mostrar la importancia de la modularidad. Cada subsistema debe integrarse con otros para formar un sistema cohesivo, permitiendo una mejor gestión y evolución del sistema.
+
+\section{Roles en la Arquitectura}
+
+En el contexto empresarial, las organizaciones se dividen en divisiones, departamentos y equipos que poseen diferentes roles y responsabilidades, lo que resulta en una arquitectura empresarial compleja. En este ecosistema, podemos identificar dos roles fundamentales:
+
+\subsection{El Arquitecto Empresarial}
+Los arquitectos empresariales no controlan la funcionalidad de ninguna aplicación específica, sino que diseñan el ecosistema dentro del cual las aplicaciones individuales contribuyen a la empresa como un todo. Su rol es crucial para permitir que la empresa cumpla sus metas estratégicas, estableciendo restricciones y lineamientos para los arquitectos de aplicaciones.
+
+\subsection{El Arquitecto de Aplicaciones}
+Un arquitecto de aplicaciones es un desarrollador responsable de una aplicación particular. Estos profesionales entienden y administran los miles de objetos que comprenden la aplicación y con sus acciones diarias van formando el producto final.
+
+\begin{remark}
+\textit{Realizando una analogía con la industria cinematográfica, el arquitecto empresarial es como el productor y los arquitectos de aplicaciones son los directores}.
+\end{remark}
+
+\section{La Importancia de la Estandarización}
+
+La separación entre arquitecto empresarial y arquitecto de aplicaciones ayuda a la compañía a evitar la heterogeneidad y prevenir el caos. Esta estructura busca la \textit{estandarización} y el orden. Por tanto, es fundamental que todo desarrollador dentro de la organización:
+\begin{itemize}
+    \item Entienda los principios claves de la arquitectura empresarial
+    \item Comprenda las restricciones establecidas
+    \item Reconozca cómo sus objetivos y metas en cada \textbf{propiedad de calidad} contribuyen a la arquitectura empresarial global
+\end{itemize}
+
+Las normas ISO/IEC/IEEE y organizaciones como IETF, OMG y W3C juegan un papel crucial en la estandarización de la arquitectura de sistemas. Estas normas aseguran que las arquitecturas sean consistentes, interoperables y seguras, facilitando la colaboración y la innovación a nivel global.
+
+\section{Arquitectura en el Contexto Ágil}
+
+Desarrollar software para grandes organizaciones impone desafíos significativos. El desarrollo de software ágil surgió como una reacción a los procesos de desarrollo ``pesados'', enfatizando la construcción eficiente de productos que los clientes realmente necesitan. Para 2008, el 69\% de las compañías habían implementado metodologías ágiles en al menos uno de sus proyectos.
+
+Sin embargo, existe un debate sobre el rol de la arquitectura en el desarrollo ágil. Mientras algunos desarrolladores ágiles sugieren minimizar las técnicas de arquitectura de software, expertos como Martin Fowler defienden su importancia. El \textbf{refactoring} en sistemas grandes y legados, aunque costoso, puede ser necesario para mantener la calidad del sistema.
+
+\section{Arquitectura Suficiente}
+
+Es crucial determinar cuánta arquitectura es suficiente. Una arquitectura adecuada debe permitir que diferentes stakeholders:
+\begin{itemize}
+    \item Entiendan su integración con los procesos organizacionales
+    \item Comprendan los servicios que el sistema proporcionará
+    \item Identifiquen los bloques de construcción básicos
+    \item Entiendan los requerimientos de despliegue y niveles de servicio
+    \item Mantengan el código según las decisiones de diseño establecidas
+\end{itemize}
+
+El modelo de arquitectura dirigido por riesgo guía a los desarrolladores a implementar la arquitectura suficiente para alcanzar sistemas \textit{seguros}, \textit{escalables} y \textit{altamente disponibles}.
+
+\begin{figure}
+    \centering
+    \includegraphics{Pictures/elarquitecto.png}
+    \caption{Fuente externa: Película Matrix}
+    \label{fig:arq}
+\end{figure}
+
+\section{Del Desarrollo Individual a la Ingeniería de Software a Gran Escala}
+
+El desarrollo de software ha experimentado una transformación radical desde sus inicios en los años 50. Lo que comenzó con programadores individuales escribiendo código en tarjetas perforadas ha evolucionado hasta convertirse en una disciplina compleja que involucra equipos distribuidos globalmente. Esta evolución no ha sido solo en escala, sino también en complejidad y metodología. El pensamiento sistémico es crucial en este contexto, ya que permite ver un sistema como un conjunto de entidades interrelacionadas cuya funcionalidad es mayor que la suma de las entidades individuales. Este enfoque ayuda a comprender y diseñar sistemas complejos, asegurando que todas las implicaciones importantes de las decisiones sean consideradas.
+
+Consideremos la evolución de un caso típico: un sistema de reservas hoteleras. En sus inicios, un pequeño equipo podría desarrollar una aplicación para un hotel local, manejando reservaciones, check-in/check-out y facturación básica. Sin embargo, cuando este mismo sistema necesita escalar para servir a una cadena hotelera internacional, surgen desafíos completamente nuevos: manejo de diferentes monedas, regulaciones locales variables, múltiples zonas horarias, y picos de demanda que varían según la región y temporada.
+
+La complejidad de los sistemas modernos se ilustra perfectamente en el sector bancario. En la década de 1970, un banco típico podría operar con un mainframe central y terminales simples. Hoy, un banco digital como Nubank en Brasil debe gestionar más de 70 millones de clientes a través de múltiples servicios interconectados: cuentas corrientes, tarjetas de crédito, inversiones, seguros y préstamos. Cada uno de estos servicios podría considerarse una aplicación compleja por sí misma, pero deben funcionar como un ecosistema cohesivo.
+
+El caso de Spotify ilustra cómo la arquitectura debe evolucionar con el crecimiento. Comenzaron con una arquitectura monolítica tradicional, pero a medida que su base de usuarios creció a cientos de millones, tuvieron que adoptar una arquitectura de microservicios. Este cambio no fue solo técnico; requirió reorganizar equipos completos alrededor del concepto de "squads" y "tribes", demostrando cómo la arquitectura del sistema influye en la estructura organizacional y viceversa (Ley de Conway).
+
+La Ingeniería de Software a Gran Escala (VLSE) introduce desafíos que van más allá del código. Cuando Google decide actualizar su algoritmo de búsqueda, el cambio debe probarse y desplegarse en miles de servidores sin interrumpir el servicio. Esto requiere no solo excelencia técnica, sino también procesos sofisticados de desarrollo, prueba y despliegue. Google desarrolló herramientas como Bazel y Monarch específicamente para manejar la escala de su operación.
+
+La modularidad se convierte en un principio fundamental en VLSE, pero su implementación efectiva es más compleja de lo que parece. PayPal aprendió esta lección cuando intentó modernizar su arquitectura heredada. En lugar de realizar una reescritura completa (que había fallado anteriormente), adoptaron un enfoque gradual de "strangler fig pattern", donde los nuevos servicios modulares fueron reemplazando gradualmente al sistema antiguo. Este proceso tomó años, pero permitió mantener la operación continua mientras se modernizaba la arquitectura.
+
+Los sistemas a gran escala también deben manejar fallos de manera diferente. Netflix, por ejemplo, opera bajo el principio de "diseño para el fallo". Su arquitectura asume que los componentes fallarán y está diseñada para degradarse elegantemente. Cuando un servicio de recomendaciones falla, el sistema puede seguir transmitiendo contenido, aunque sin recomendaciones personalizadas. Este enfoque de "degradación elegante" es fundamental en sistemas que deben mantener alta disponibilidad.
+
+La seguridad en VLSE presenta sus propios desafíos únicos. El ataque a Target en 2013, donde se comprometieron 40 millones de tarjetas de crédito, comenzó a través de un proveedor de HVAC con acceso a la red corporativa. Este incidente demostró cómo en sistemas grandes, la superficie de ataque se expande más allá de los límites tradicionales del sistema, requiriendo un enfoque holístico de la seguridad.
+
+La integración de sistemas es fundamental para conectar diferentes componentes, destacando la flexibilidad y la estandarización. El uso de middleware permite que los sistemas se comuniquen de manera eficiente, facilitando la interoperabilidad y la cohesión. 
+
+Un ejemplo puntual de integración de sistemas es el de las ciudades inteligentes. En una ciudad inteligente, múltiples subsistemas como el tráfico, la gestión de residuos, la energía y la seguridad deben trabajar juntos de manera cohesiva. Por ejemplo, los sensores de tráfico pueden enviar datos en tiempo real a un sistema central que ajusta los semáforos para optimizar el flujo vehicular. Este sistema central puede estar integrado con aplicaciones móviles que informan a los ciudadanos sobre las condiciones del tráfico, reduciendo así los tiempos de viaje y mejorando la eficiencia del transporte público.
+
+Otro caso notable es el gobierno digital en Estonia. Estonia ha implementado un sistema de gobierno digital que permite a los ciudadanos realizar casi todas las interacciones gubernamentales en línea, desde votar hasta pagar impuestos. Este sistema se basa en la integración de múltiples subsistemas, como el registro civil, la seguridad social y los servicios de salud. Por ejemplo, cuando un niño nace, el hospital registra el nacimiento en el sistema digital, que automáticamente actualiza el registro civil, emite un número de identificación personal y notifica a los servicios de salud y seguridad social. Esta integración reduce la burocracia, mejora la eficiencia y proporciona un servicio más rápido y preciso a los ciudadanos.
+
+Estos ejemplos muestran cómo la integración de sistemas, facilitada por el uso de middleware, puede mejorar significativamente la eficiencia y la calidad de los servicios en diferentes contextos.
+
+\section{Desafíos Actuales y Futuros}
+
+Los sistemas heredados representan uno de los mayores desafíos en la arquitectura moderna, un problema que se vuelve más crítico con el paso del tiempo. El caso de HSBC en 2015, donde problemas con un sistema COBOL de 30 años afectaron los pagos de nómina, es apenas la punta del iceberg. En el sector financiero, se estima que el 43\% de los sistemas bancarios centrales todavía funcionan en COBOL, procesando diariamente millones de transacciones valoradas en billones de dólares. La modernización de estos sistemas no es solo una cuestión de actualizar tecnología, sino de mantener la continuidad del negocio mientras se evoluciona.
+
+La integración de la Inteligencia Artificial está transformando fundamentalmente la arquitectura de sistemas. Tesla, por ejemplo, no solo debe gestionar la operación de sus vehículos eléctricos, sino también manejar el entrenamiento continuo de sus modelos de IA con datos recopilados de millones de millas de conducción autónoma. Esto requiere una arquitectura que pueda manejar enormes volúmenes de datos en tiempo real, mientras mantiene la seguridad y confiabilidad necesarias para sistemas que involucran la seguridad humana.
+
+El surgimiento de arquitecturas descentralizadas presenta nuevos desafíos y oportunidades. La adopción de blockchain en sistemas empresariales, como el proyecto Food Trust de IBM, que rastrea la cadena de suministro de alimentos, requiere repensar conceptos fundamentales de arquitectura. La inmutabilidad, la transparencia y la descentralización introducen nuevas consideraciones en el diseño de sistemas que tradicionalmente se basaban en bases de datos centralizadas y control jerárquico.
+
+La seguridad y la privacidad se han convertido en preocupaciones centrales en la arquitectura moderna. El caso de Cambridge Analytica y Facebook demostró cómo las decisiones arquitectónicas pueden tener ramificaciones que van más allá de lo técnico, afectando la privacidad de millones de usuarios y potencialmente influenciando procesos democráticos. Las arquitecturas modernas deben incorporar principios de "privacidad por diseño" y considerar las implicaciones éticas de sus decisiones técnicas.
+
+El edge computing está redefiniendo dónde y cómo se procesan los datos. Organizaciones como Cloudflare están construyendo redes de edge computing que permiten procesar datos más cerca de donde se generan, reduciendo la latencia y mejorando la experiencia del usuario. Sin embargo, esto introduce nuevos desafíos en términos de consistencia de datos, seguridad y mantenimiento de sistemas distribuidos a escala global.
+
+La sostenibilidad emerge como una nueva dimensión en la arquitectura de sistemas. Google, por ejemplo, ha rediseñado sus centros de datos para optimizar la eficiencia energética, utilizando IA para reducir el consumo de energía en refrigeración en un 40\%. Las arquitecturas futuras deberán considerar su impacto ambiental como un requisito no funcional crítico.
+
+El desarrollo ágil continúa desafiando las prácticas tradicionales de arquitectura. Aunque algunos desarrolladores ágiles sugieren minimizar el enfoque en la arquitectura, la experiencia ha demostrado que la agilidad y la buena arquitectura no son mutuamente excluyentes. Spotify, por ejemplo, ha demostrado cómo una arquitectura bien pensada puede facilitar la entrega continua y la innovación rápida, mientras mantiene la estabilidad del sistema.
+
+La gestión de la complejidad sigue siendo un desafío fundamental. Los sistemas modernos deben integrar múltiples tecnologías, frameworks y plataformas, cada una con su propia curva de aprendizaje y peculiaridades. Amazon, por ejemplo, utiliza más de 100 servicios diferentes en su plataforma de comercio electrónico. Mantener esta complejidad manejable requiere un equilibrio cuidadoso entre la innovación y la estandarización.
+
+Mirando hacia el futuro, la computación cuántica podría revolucionar completamente nuestro enfoque de la arquitectura de sistemas. IBM y Google están desarrollando computadoras cuánticas que podrían resolver ciertos problemas exponencialmente más rápido que las computadoras clásicas. Esto podría requerir una reconsideración fundamental de cómo diseñamos y optimizamos nuestros sistemas.
+
+La arquitectura de sistemas está en constante evolución, impulsada por nuevas tecnologías, requisitos cambiantes y lecciones aprendidas de éxitos y fracasos pasados. El desafío para los arquitectos modernos es mantener sistemas que sean lo suficientemente robustos para ser confiables, lo suficientemente flexibles para evolucionar, y lo suficientemente simples para ser mantenidos efectivamente.

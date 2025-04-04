@@ -1,0 +1,14 @@
+@startuml
+package "Arquitectura Actual" {
+    [Sistema de Gestión\nde Propiedades] as PMS
+    [Sistema de Análisis\nComercial] as Analytics
+    [Sistema de Reservas\nEmpresarial] as Booking
+    [Sistema de Gestión\nde Canales] as Channel
+    [Sistema de Precios\nHoteleros] as Pricing
+    
+    Booking --> Pricing
+    Channel --> Pricing
+    Analytics --> Pricing
+    PMS --> Pricing
+}
+@enduml 

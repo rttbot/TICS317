@@ -1,0 +1,157 @@
+\chapterimage{../Pictures/iot.png}
+
+\chapter{Patrones de Diseño de Software}
+\vspace{160pt}
+\section{Caso de Estudio}
+
+\section{Implementación del Proyecto PuertaPerruna}
+
+El proyecto "PuertaPerruna" está implementado como un sistema modular que simula el funcionamiento de una puerta automática para perros, utilizando sensores para detectar ladridos y un actuador para abrir y cerrar la puerta. Aquí se explica cómo está estructurado y cómo se relaciona con los requisitos definidos en el archivo de repaso.
+
+\subsection{Estructura del Proyecto}
+
+\begin{itemize}
+    \item \textbf{Sensores:}
+    \begin{itemize}
+        \item \textit{Función:} Detecta si el sonido es un ladrido y verifica si es seguro cerrar la puerta.
+        \item \textit{Implementación:} 
+        \begin{itemize}
+            \item \texttt{detectar\_ladrido(sonido)}: Reconoce el sonido "Guau" como un ladrido.
+            \item \texttt{es\_seguro\_cerrar()}: Simula la detección de movimiento para decidir si es seguro cerrar la puerta.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{ActuadorPuerta:}
+    \begin{itemize}
+        \item \textit{Función:} Controla el estado de la puerta (abierta o cerrada).
+        \item \textit{Implementación:}
+        \begin{itemize}
+            \item \texttt{abrir()}: Abre la puerta si está cerrada.
+            \item \texttt{cerrar()}: Cierra la puerta si está abierta.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{SistemaPuertaPerruna:}
+    \begin{itemize}
+        \item \textit{Función:} Coordina la interacción entre los sensores y el actuador.
+        \item \textit{Implementación:}
+        \begin{itemize}
+            \item \texttt{procesar\_ladrido(sonido)}: Abre la puerta si se detecta un ladrido y comienza el proceso de cierre automático.
+            \item \texttt{\_iniciar\_cierre\_automatico()}: Inicia un hilo que cierra la puerta automáticamente después de un tiempo, verificando la seguridad antes de cerrar.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Relación con los Requisitos}
+
+\begin{itemize}
+    \item \textbf{RF1:} La detección de ladridos está implementada en la clase \texttt{Sensores}, aunque es una simulación básica que reconoce cualquier sonido que contenga "Guau".
+    \item \textbf{RF2 y RF3:} La apertura y cierre de la puerta están implementados en la clase \texttt{ActuadorPuerta}.
+    \item \textbf{RF4:} La seguridad para cerrar la puerta se simula en \texttt{es\_seguro\_cerrar()}, que utiliza un valor aleatorio para decidir si es seguro.
+    \item \textbf{RF5:} El estado de la puerta se gestiona en \texttt{ActuadorPuerta}, aunque no hay un método explícito para consultar el estado.
+\end{itemize}
+
+\subsection{Discusión sobre la Implementación}
+
+Este proyecto es una \textbf{prueba de concepto} (PoC) que simula el comportamiento de un sistema ciberfísico. No está diseñado para ser un producto final, sino para explorar y validar ideas básicas. Los estudiantes pueden usar este prototipo para:
+\begin{itemize}
+    \item \textbf{Análisis de Patrones de Diseño:} Utilizar el proyecto como base para identificar y aplicar patrones de diseño adecuados, como el patrón de estrategia para la detección de ladridos o el patrón de estado para el control de la puerta.
+    \item \textbf{Buenas Prácticas y Principios de Diseño:} Evaluar y mejorar el código existente aplicando principios de diseño como SOLID, DRY y KISS, asegurando que el sistema sea más mantenible y escalable.
+    \item \textbf{Reimplementación de Lógicas:} Rediseñar y reimplementar las lógicas del sistema para mejorar su eficiencia y robustez, utilizando técnicas avanzadas de programación y diseño de software.
+\end{itemize}
+
+\section{Buenas Prácticas de Diseño}
+
+Además de los patrones de diseño, es importante aplicar buenas prácticas de diseño como los principios SOLID, DRY (Don't Repeat Yourself) y KISS (Keep It Simple, Stupid). Estos principios ayudan a crear un código más limpio, fácil de mantener y escalable.
+
+\begin{itemize}
+    \item \textbf{SOLID:} Es un acrónimo que representa cinco principios de diseño:
+        \begin{itemize}
+            \item \textbf{S - Single Responsibility Principle (SRP):} Cada clase debe tener una única responsabilidad. Resuelve el problema de clases que hacen demasiadas cosas, lo que dificulta su mantenimiento. Se usa cuando una clase tiene múltiples razones para cambiar. No se debe usar cuando la división de responsabilidades resulta en clases excesivamente pequeñas y difíciles de gestionar.
+            \item \textbf{O - Open/Closed Principle (OCP):} Las clases deben estar abiertas para extensión pero cerradas para modificación. Resuelve el problema de tener que modificar código existente para agregar nuevas funcionalidades. Se usa cuando se espera que el sistema evolucione con nuevas características. No se debe usar en sistemas muy simples donde la extensión no es necesaria.
+            \item \textbf{L - Liskov Substitution Principle (LSP):} Los objetos de una clase derivada deben poder reemplazar objetos de la clase base sin alterar el funcionamiento del programa. Resuelve problemas de herencia incorrecta. Se usa cuando se diseñan jerarquías de clases. No se debe usar cuando la herencia no es la mejor solución para la reutilización de código.
+            \item \textbf{I - Interface Segregation Principle (ISP):} Los clientes no deben estar obligados a depender de interfaces que no utilizan. Resuelve el problema de interfaces infladas. Se usa cuando una interfaz tiene demasiados métodos que no son relevantes para todos los implementadores. No se debe usar cuando la simplicidad de una interfaz única es más beneficiosa.
+            \item \textbf{D - Dependency Inversion Principle (DIP):} Los módulos de alto nivel no deben depender de módulos de bajo nivel, ambos deben depender de abstracciones. Resuelve el problema de dependencias rígidas entre módulos. Se usa para aumentar la flexibilidad y reducir el acoplamiento. No se debe usar en sistemas muy pequeños donde la complejidad añadida no se justifica.
+        \end{itemize}
+    \item \textbf{DRY (Don't Repeat Yourself):} Evita la duplicación de código, promoviendo la reutilización. Resuelve el problema de tener múltiples fragmentos de código que hacen lo mismo, lo que dificulta el mantenimiento. Se usa cuando se detecta código repetido. No se debe usar cuando la abstracción necesaria para evitar la duplicación resulta en un diseño demasiado complejo.
+    \item \textbf{KISS (Keep It Simple, Stupid):} Mantiene el diseño simple y directo, evitando la complejidad innecesaria. Resuelve el problema de diseños complicados que son difíciles de entender y mantener. Se usa en la mayoría de los casos para asegurar que el sistema sea fácil de manejar. No se debe usar como excusa para evitar la implementación de soluciones necesarias que pueden ser complejas.
+\end{itemize}
+
+\subsection{Desafíos para los Estudiantes}
+
+\begin{itemize}
+    \item \textbf{Evaluar y Mejorar el Código:} Revisar el código existente y aplicar principios de diseño para mejorar su calidad.
+\end{itemize}
+
+\section{Patrones de Diseño}
+
+En este capítulo, exploraremos cómo los patrones de diseño de software pueden aplicarse al proyecto PuertaPerruna para mejorar su estructura y funcionalidad. Los patrones de diseño son soluciones probadas a problemas comunes en el diseño de software, y su aplicación puede hacer que el sistema sea más robusto y mantenible.
+
+\subsection{Patrón Model-View-Controller (MVC)}
+
+El patrón MVC separa la lógica de negocio, la interfaz de usuario y el control de entrada, permitiendo una mejor organización del código. En PuertaPerruna, podríamos aplicar MVC separando la lógica de detección de ladridos (Modelo), la interfaz de usuario para el control de la puerta (Vista), y el manejo de eventos de ladrido (Controlador).
+
+\subsection{Patrón Proxy}
+
+El patrón Proxy actúa como un intermediario para controlar el acceso a un objeto. En PuertaPerruna, podríamos usar un proxy para controlar el acceso a los sensores, asegurando que solo se realicen lecturas cuando sea necesario, optimizando así el rendimiento.
+
+\subsection{Patrón Wrapper (Adapter)}
+
+El patrón Wrapper permite que clases con interfaces incompatibles trabajen juntas. En el contexto de PuertaPerruna, podríamos usar un wrapper para integrar diferentes tipos de sensores o actuadores que no comparten la misma interfaz, facilitando la expansión del sistema.
+
+\subsection{Patrón Caching}
+
+El patrón Caching almacena resultados de operaciones costosas para su reutilización. En PuertaPerruna, podríamos implementar caching para almacenar los resultados de detecciones de ladridos recientes, reduciendo la carga de procesamiento en el sistema.
+
+\subsection{Ejercicios de Revisión}
+
+Para asegurar que estos patrones están bien aplicados en el código, considera los siguientes puntos de verificación:
+
+\begin{itemize}
+    \item \textbf{MVC:} ¿Está la lógica de negocio separada de la interfaz de usuario y el control de eventos?
+    \item \textbf{Proxy:} ¿Se controla adecuadamente el acceso a los recursos críticos del sistema?
+    \item \textbf{Wrapper:} ¿Se han adaptado correctamente las interfaces incompatibles para trabajar juntas?
+    \item \textbf{Caching:} ¿Se están almacenando y reutilizando los resultados de operaciones costosas de manera eficiente?
+\end{itemize}
+
+Estos patrones, aplicados correctamente, pueden mejorar significativamente la estructura y eficiencia del sistema PuertaPerruna.
+
+\section{Análisis de Patrones de Diseño y Principios SOLID en PuertaPerruna}
+
+En este análisis, responderemos a las preguntas clave sobre la aplicación de patrones de diseño en el proyecto PuertaPerruna, integrando los principios SOLID para mejorar la comprensión y el diseño del sistema.
+
+\begin{itemize}
+    \item \textbf{MVC:} ¿Está la lógica de negocio separada de la interfaz de usuario y el control de eventos?
+    \begin{itemize}
+        \item Actualmente, el sistema PuertaPerruna no implementa explícitamente el patrón MVC. Sin embargo, se podría estructurar el sistema para separar la lógica de negocio (gestión de sensores y actuadores) de la interfaz de usuario (simulador) y el control de eventos (procesamiento de ladridos).
+    \end{itemize}
+    
+    \item \textbf{Proxy:} ¿Se controla adecuadamente el acceso a los recursos críticos del sistema?
+    \begin{itemize}
+        \item El sistema no utiliza un proxy actualmente, pero podría beneficiarse de uno para controlar el acceso a los sensores y actuadores, asegurando que solo las solicitudes válidas puedan activar la puerta.
+    \end{itemize}
+    
+    \item \textbf{Wrapper:} ¿Se han adaptado correctamente las interfaces incompatibles para trabajar juntas?
+    \begin{itemize}
+        \item No se utiliza un wrapper en el sistema actual. Implementar un wrapper podría facilitar la integración de diferentes tipos de sensores y actuadores, asegurando que todos puedan comunicarse de manera uniforme con el sistema.
+    \end{itemize}
+    
+    \item \textbf{Caching:} ¿Se están almacenando y reutilizando los resultados de operaciones costosas de manera eficiente?
+    \begin{itemize}
+        \item El sistema no implementa caching, pero podría beneficiarse de almacenar temporalmente los patrones de ladridos reconocidos para mejorar la eficiencia del reconocimiento.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Aplicación de Principios SOLID}
+
+\begin{itemize}
+    \item \textbf{Single Responsibility Principle (SRP):} Cada clase en el sistema debe tener una única responsabilidad. En PuertaPerruna, las clases \texttt{Sensores} y \texttt{ActuadorPuerta} cumplen con este principio al encargarse exclusivamente de la detección de ladridos y el control de la puerta, respectivamente.
+    
+    \item \textbf{Open/Closed Principle (OCP):} Las clases deben estar abiertas para la extensión pero cerradas para la modificación. Se podría mejorar el sistema permitiendo la adición de nuevos tipos de sensores sin modificar las clases existentes, utilizando interfaces o clases abstractas.
+    
+    \item \textbf{Liskov Substitution Principle (LSP):} Los objetos de una clase derivada deben poder sustituir a los objetos de la clase base sin alterar el comportamiento del sistema. Aunque este principio no se aplica directamente en el código actual, podría considerarse al extender la funcionalidad de los sensores.
+    
+    \item \textbf{Interface Segregation Principle (ISP):} Los clientes no deben verse obligados a depender de interfaces que no utilizan. En el contexto de PuertaPerruna, esto podría lograrse definiendo interfaces específicas para cada tipo de sensor o actuador.
+    
+    \item \textbf{Dependency Inversion Principle (DIP):} Los módulos de alto nivel no deben depender de módulos de bajo nivel, sino de abstracciones. Implementar este principio podría mejorar la flexibilidad del sistema, permitiendo cambiar la implementación de los sensores o actuadores sin afectar el resto del sistema.
+\end{itemize}
+
+Este análisis no solo ayuda a los estudiantes a comprender mejor los patrones de diseño y los principios SOLID, sino que también les proporciona una guía para mejorar el diseño del sistema PuertaPerruna.
