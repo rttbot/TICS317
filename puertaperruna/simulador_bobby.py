@@ -9,7 +9,7 @@ def main():
     print("Bobby ladra dos veces para salir...")
     sistema.procesar_ladrido("Guau Guau")
 
-    print("\nBobby está en el patio...")
+    print("\nBobby está en el patio....")
     time.sleep(10)
 
     print("\nBobby termina de hacer sus cosas y vuelve a la puerta.")
