@@ -1,0 +1,26 @@
+# Archivos de caché de Python
+__pycache__/
+
+# Archivos de sistema
+.DS_Store
+
+# Archivos de entorno virtual
+venv/
+env/
+
+# Archivos de configuración local
+.env
+
+# Archivos de log
+*.log
+
+# Archivos de compilación
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de editor
+*.swp
+*.swo
+.idea/
+.vscode/ 

@@ -1,4 +1,3 @@
-
 import time
 from sistema_puerta_perruna import SistemaPuertaPerruna
 

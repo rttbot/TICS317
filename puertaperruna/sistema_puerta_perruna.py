@@ -1,44 +1,7 @@
-
 import threading
 import time
-import random
-
-
-class Sensores:
-    def detectar_ladrido(self, sonido):
-        print(f"Sensores: detectando sonido '{sonido}'...")
-        if "Guau" in sonido:
-            print("Sensores: ladrido reconocido.")
-            return True
-        print("Sensores: sonido no reconocido.")
-        return False
-
-    def es_seguro_cerrar(self):
-        print("Sensores: verificando seguridad...")
-        if random.random() > 0.2:
-            print("Sensores: es seguro cerrar.")
-            return True
-        print("Sensores: movimiento detectado. No es seguro cerrar.")
-        return False
-
-
-class ActuadorPuerta:
-    def __init__(self):
-        self.estado = "cerrada"
-
-    def abrir(self):
-        if self.estado == "cerrada":
-            print("Actuador: abriendo la puerta...")
-            self.estado = "abierta"
-        else:
-            print("Actuador: la puerta ya está abierta.")
-
-    def cerrar(self):
-        if self.estado == "abierta":
-            print("Actuador: cerrando la puerta...")
-            self.estado = "cerrada"
-        else:
-            print("Actuador: la puerta ya está cerrada.")
+from Sensores import Sensores
+from ActuadorPuerta import ActuadorPuerta
 
 
 class SistemaPuertaPerruna:
