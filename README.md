@@ -1,54 +1,88 @@
-# Instrucciones para levantar SecureShop y Puertaperruna en modo debug
+# Proyectos: Sistema de Puerta Perruna y SecureShop
 
-## Levantar SecureShop
+Este repositorio contiene dos proyectos: un sistema de puerta automática para perros y una tienda en línea segura. A continuación, se detallan las instrucciones para configurar y ejecutar cada proyecto.
 
-SecureShop consta de tres aplicaciones que deben ejecutarse en el siguiente orden:
+## Requisitos Previos
 
-1. **API (api.py)**: 
-   - Asegúrate de tener Python y Flask instalados en tu sistema. Si no los tienes, puedes instalarlos usando:
+- **IDE Recomendado**: Se recomienda utilizar un IDE como Visual Studio Code o PyCharm para facilitar el desarrollo y la depuración.
+- **Clonar el Repositorio**: 
+  ```bash
+  git clone https://github.com/tu_usuario/tu_repositorio.git
+  cd tu_repositorio
+  ```
+
+## Configuración del Entorno Local
+
+1. **Crear un Entorno Virtual**:
+   - Un entorno virtual te permite crear un espacio aislado para tus proyectos de Python, donde puedes instalar paquetes sin afectar el sistema global de Python.
+   - Ejecuta el siguiente comando para crear un entorno virtual llamado `venv`:
      ```bash
-     pip install flask
+     python -m venv venv
      ```
-   - Navega al directorio del proyecto SecureShop:
+
+2. **Activar el Entorno Virtual**:
+   - La activación del entorno virtual varía según el sistema operativo:
+     - En Windows:
+       ```bash
+       .\venv\Scripts\activate
+       ```
+     - En macOS/Linux:
+       ```bash
+       source venv/bin/activate
+       ```
+
+3. **Instalar Dependencias**:
+   - Asegúrate de que el entorno virtual esté activado antes de instalar las dependencias.
+   - Para `puertaperruna`:
      ```bash
-     cd /ruta/a/tu/proyecto/SecureShop
+     cd TICS317/puertaperruna
+     pip install -r requirements.txt
      ```
-   - Ejecuta la API en modo debug:
+   - Para `SecureShop`:
+     ```bash
+     cd TICS317/SecureShop
+     pip install -r requirements.txt
+     ```
+
+## Sistema de Puerta Perruna
+
+Este proyecto simula un sistema de puerta automática para perros, que se abre al detectar un ladrido.
+
+### Ejecución
+
+1. **Ejecutar el Simulador**:
+   - Asegúrate de que el entorno virtual esté activado.
+   - Ejecuta el siguiente comando:
+     ```bash
+     python simulador_bobby.py
+     ```
+
+2. **Uso de `pdb` para Depuración**:
+   - El script `simulador_bobby.py` incluye un punto de interrupción con `pdb`. Para avanzar en el depurador, utiliza los siguientes comandos:
+     - `n`: Ejecuta la siguiente línea de código.
+     - `c`: Continúa la ejecución hasta el siguiente punto de interrupción.
+     - `q`: Sale del depurador.
+
+
+## SecureShop
+
+Este proyecto es una aplicación web para una tienda en línea segura.
+
+### Ejecución
+
+1. **Iniciar la Aplicación**:
+   - Asegúrate de que el entorno virtual esté activado.
+   - Ejecuta el siguiente comando:
      ```bash
      python api.py
      ```
-   - La API debería estar corriendo en `http://localhost:5001`.
 
-2. **Panel de Administración (securesoftware.py)**:
-   - Ejecuta el panel de administración en modo debug:
-     ```bash
-     python securesoftware.py
-     ```
-   - El panel debería estar corriendo en `http://localhost:5002`.
+2. **Acceder a la Aplicación**:
+   - Abre un navegador web y ve a `http://localhost:5001` para interactuar con la API.
 
-3. **Tienda (secureshop.py)**:
-   - Ejecuta la tienda en modo debug:
-     ```bash
-     python secureshop.py
-     ```
-   - La tienda debería estar corriendo en `http://localhost:5003`.
+## Notas Finales
 
-## Levantar Puertaperruna
-
-1. Asegúrate de tener Python instalado en tu sistema.
-
-2. Navega al directorio del proyecto Puertaperruna:
-   ```bash
-   cd /ruta/a/tu/proyecto/puertaperruna
-   ```
-
-3. Para evaluar la ejecución del script `sistema_puerta_perruna.py` en Cursor, puedes establecer puntos de interrupción (breakpoints) de la siguiente manera:
-   - Abre el archivo `sistema_puerta_perruna.py` en Cursor.
-   - Haz clic en el margen izquierdo junto a la línea de código donde deseas establecer un punto de interrupción. Un punto rojo debería aparecer indicando que el breakpoint está activo.
-
-4. Ejecuta el script en modo debug:
-   ```bash
-   python -m pdb sistema_puerta_perruna.py
-   ```
-
-Este script simula el funcionamiento de un sistema de puerta automática para mascotas y no se ejecuta en un puerto específico. Utiliza los breakpoints para pausar la ejecución y evaluar el estado del programa en Cursor.
+- Asegúrate de que el entorno virtual esté activado antes de ejecutar cualquier script.
+- Consulta la documentación de cada proyecto para más detalles sobre su funcionamiento y características.
+- En lo personal, prefiero el debug del IDE más que por comando.
+- Ojo típico errorcillo - fijarse cómo tiene configurado correr python (en mi caso es python3)
