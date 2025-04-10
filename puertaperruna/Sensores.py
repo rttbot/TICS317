@@ -16,4 +16,13 @@ class Sensores:
             print("Sensores: es seguro cerrar.")
             return True
         print("Sensores: movimiento detectado. No es seguro cerrar.")
+        return False
+
+    def detectar_movimiento(self):
+        print("Sensores: verificando movimiento...")
+        # Simular detección de movimiento con una probabilidad
+        if random.random() > 0.3:
+            print("Sensores: movimiento detectado.")
+            return True
+        print("Sensores: no se detectó movimiento.")
         return False 
