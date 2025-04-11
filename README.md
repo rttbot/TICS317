@@ -1,4 +1,4 @@
-# Proyectos: Sistema de Puerta Perruna y SecureShop
+# Proyectos: Sistema de Puerta Perruna y SecureShop 
 
 Este repositorio contiene dos proyectos: un sistema de puerta automática para perros y una tienda en línea segura. A continuación, se detallan las instrucciones para configurar y ejecutar cada proyecto.
 
