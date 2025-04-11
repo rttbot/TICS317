@@ -1,0 +1,54 @@
+@startuml Detallado
+
+actor Bobby
+participant SimuladorBobby
+participant SistemaPuertaPerruna
+participant ActuadorPuerta
+participant Sensores
+
+Bobby -> Puerta: procesar_ladrido("Guau Guau")
+activate Puerta
+alt Puerta abierta
+    Bobby -> Bobby: Sale al patio
+    deactivate Puerta
+    ... tiempo pasa ...
+    Bobby -> Puerta: procesar_ladrido("Guau Guau")
+    activate Puerta
+    loop Hasta 10 veces
+        Puerta --> Bobby: Puerta cerrada
+        Bobby -> Puerta: procesar_ladrido("Guau Guau")
+    end
+    Puerta --> Bobby: Puerta abierta
+    deactivate Puerta
+else Puerta cerrada
+    Bobby -> Bobby: Se arrepiente
+    deactivate Puerta
+end
+
+
+
+@enduml 
+@startuml
+   Bobby -> SimuladorBobby: main()
+SimuladorBobby -> SistemaPuertaPerruna: procesar_ladrido("Guau Guau")
+activate SistemaPuertaPerruna
+SistemaPuertaPerruna -> Sensores: detectar_ladrido("Guau Guau")
+Sensores --> SistemaPuertaPerruna: resultado
+alt Ladrido detectado
+    SistemaPuertaPerruna -> ActuadorPuerta: abrir()
+    activate ActuadorPuerta
+    ActuadorPuerta --> SistemaPuertaPerruna: puerta abierta
+    deactivate ActuadorPuerta
+else Ladrido no detectado
+    SistemaPuertaPerruna -> ActuadorPuerta: cerrar()
+    activate ActuadorPuerta
+    ActuadorPuerta --> SistemaPuertaPerruna: puerta cerrada
+    deactivate ActuadorPuerta
+end
+SistemaPuertaPerruna -> Sensores: es_seguro_cerrar()
+Sensores --> SistemaPuertaPerruna: resultado
+SistemaPuertaPerruna -> ActuadorPuerta: abrir_temporalmente(Sensores)
+ActuadorPuerta --> SistemaPuertaPerruna: puerta abierta temporalmente
+
+deactivate SistemaPuertaPerruna
+@enduml 

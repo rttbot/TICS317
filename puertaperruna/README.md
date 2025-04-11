@@ -76,7 +76,7 @@ Para crear una página web básica para el sistema de puerta perruna, sigue esto
         <p>El sistema está diseñado para ser seguro, verificando que no haya movimiento antes de cerrar la puerta. Una vez que se detecta un ladrido, la puerta se abre automáticamente y se cierra cuando es seguro hacerlo.</p>
     </div>
     <footer>
-        <p>&copy; 2023 Sistema de Puerta Perruna</p>
+        <p>&copy; 2025 Sistema de Puerta Perruna</p>
     </footer>
 </body>
 </html>
