@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard PuertaPerruna</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .dashboard {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .puerta {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .abierta { background-color: #90EE90; }
+        .cerrada { background-color: #FFB6C1; }
+        .error { background-color: #FFD700; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Dashboard PuertaPerruna</h1>
+        <div id="puertas">
+            {% for id, estado in estados.items() %}
+            <div class="puerta {{ estado }}" id="puerta-{{ id }}">
+                <h3>Puerta {{ id }}</h3>
+                <p>Estado: <span class="estado">{{ estado }}</span></p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+        
+        socket.on('actualizacion_estado', function(data) {
+            const puertaDiv = document.getElementById(`puerta-${data.puerta_id}`);
+            if (!puertaDiv) {
+                // Si la puerta no existe, crear nuevo elemento
+                const puertasDiv = document.getElementById('puertas');
+                const nuevaPuerta = document.createElement('div');
+                nuevaPuerta.id = `puerta-${data.puerta_id}`;
+                nuevaPuerta.className = `puerta ${data.estado}`;
+                nuevaPuerta.innerHTML = `
+                    <h3>Puerta ${data.puerta_id}</h3>
+                    <p>Estado: <span class="estado">${data.estado}</span></p>
+                `;
+                puertasDiv.appendChild(nuevaPuerta);
+            } else {
+                // Actualizar puerta existente
+                puertaDiv.className = `puerta ${data.estado}`;
+                puertaDiv.querySelector('.estado').textContent = data.estado;
+            }
+        });
+    </script>
+</body>
+</html> 
