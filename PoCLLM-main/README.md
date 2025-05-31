@@ -1,6 +1,8 @@
+
 # Entrenamiento de un Modelo de Lenguaje Simple (LLM) con el corpus Brown
 
 > **Nota:** Este proyecto fue probado con **Python 3.11.11**.
+> **Modelo:** Bajar desde acá https://www.dropbox.com/t/X4uKZnFWtpIwfOND 
 
 Este proyecto permite entrenar un modelo de lenguaje basado en LSTM usando el corpus Brown de NLTK. El modelo y el tokenizer resultantes se pueden usar para generación de texto y otras tareas de NLP.
 
