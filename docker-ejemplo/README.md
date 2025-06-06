@@ -14,6 +14,59 @@
 
 ---
 
+## 🐳 Instalación de Docker
+
+### macOS
+
+1. Descarga e instala [Docker Desktop para Mac](https://www.docker.com/products/docker-desktop/).
+2. Abre el archivo `.dmg` descargado y arrastra Docker a tu carpeta de Aplicaciones.
+3. Inicia Docker Desktop desde Aplicaciones y espera a que el icono de Docker esté activo en la barra de menú.
+4. Verifica la instalación abriendo una terminal y ejecutando:
+   ```sh
+   docker --version
+   ```
+
+### Linux (Ubuntu)
+
+1. Actualiza los paquetes existentes:
+   ```sh
+   sudo apt update
+   ```
+2. Instala los paquetes necesarios:
+   ```sh
+   sudo apt install apt-transport-https ca-certificates curl software-properties-common
+   ```
+3. Agrega la clave GPG oficial de Docker:
+   ```sh
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   ```
+4. Agrega el repositorio de Docker:
+   ```sh
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   ```
+5. Instala Docker Engine:
+   ```sh
+   sudo apt update
+   sudo apt install docker-ce
+   ```
+6. Verifica la instalación:
+   ```sh
+   docker --version
+   ```
+
+### Windows
+
+1. Descarga e instala [Docker Desktop para Windows](https://www.docker.com/products/docker-desktop/).
+2. Ejecuta el instalador y sigue los pasos.
+3. Reinicia tu PC si es necesario.
+4. Abre Docker Desktop y espera a que esté activo.
+5. Verifica la instalación abriendo PowerShell o CMD y ejecutando:
+   ```sh
+   docker --version
+   ```
+
+---
+
 ## 🖥️ Uso local
 
 1. Ejecuta la aplicación:
@@ -75,4 +128,47 @@ Para simular varios usuarios agregando tareas y verificar el perfil operacional:
 - [x] Código funcional
 - [x] Dockerfile creado y probado
 - [x] Prueba operacional documentada
-- [x] README claro y atractivo 
+- [x] README claro y atractivo
+
+---
+
+## 🛠️ Resolución de errores comunes
+
+### 1. ModuleNotFoundError: No module named 'requests'
+
+**Causa:** Falta instalar la librería `requests` dentro del contenedor Docker.
+
+**Solución:**
+- Asegúrate de tener un archivo `requirements.txt` con el contenido:
+  ```
+  requests
+  ```
+- Modifica el `Dockerfile` para instalar las dependencias:
+  ```dockerfile
+  COPY requirements.txt /app/
+  RUN pip install --no-cache-dir -r requirements.txt
+  ```
+
+---
+
+### 2. ERROR: docker: 'docker buildx build' requires 1 argument
+
+**Causa:** Olvidaste poner el punto (`.`) al final del comando `docker build`.
+
+**Solución:**
+- Usa el comando completo:
+  ```sh
+  docker build -t docker-ejemplo .
+  ```
+  (¡No olvides el punto al final!)
+
+---
+
+### 3. sudo: apt: command not found
+
+**Causa:** Estás usando comandos de Linux (Ubuntu) en macOS, donde no existe `apt`.
+
+**Solución:**
+- En macOS, instala Docker siguiendo solo los pasos de la sección "macOS" del README. No uses comandos `apt` en Mac.
+
+--- 

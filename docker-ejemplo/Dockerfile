@@ -1,11 +1,12 @@
-# Usar una imagen base de Python ligera
 FROM python:3.13.3-slim
 
-# Definir el directorio de trabajo
 WORKDIR /app
 
-# Copiar el código fuente
-COPY main.py /app/
+# Copiar requirements.txt e instalar dependencias
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando para ejecutar la app
-CMD ["python", "main.py"] 
+# Copiar el código fuente
+COPY main.py test_operacional.py /app/
+
+CMD ["python", "main.py"]
