@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  load_balancer:
+    build: .
+    command: ["python", "load_balancer.py"]
+    ports:
+      - "8080:8080"
+    networks:
+      - ticsnet
+    depends_on:
+      - server1
+      - server2
+  server1:
+    build: .
+    command: ["python", "taskserver.py", "5001"]
+    networks:
+      - ticsnet
+    volumes:
+      - ./tasks.json:/app/tasks.json
+  server2:
+    build: .
+    command: ["python", "taskserver.py", "5002"]
+    networks:
+      - ticsnet
+    volumes:
+      - ./tasks.json:/app/tasks.json
+  client1:
+    build: .
+    command: ["python", "clientemulator.py"]
+    networks:
+      - ticsnet
+    depends_on:
+      - load_balancer
+  client2:
+    build: .
+    command: ["python", "clientemulator.py"]
+    networks:
+      - ticsnet
+    depends_on:
+      - load_balancer
+networks:
+  ticsnet:
+    driver: bridge
