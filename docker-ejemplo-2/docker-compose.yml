@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  server:
+    build: .
+    container_name: taskserver
+    restart: unless-stopped
+    networks:
+      - ticsnet
+    volumes:
+      - ./tasks.json:/app/tasks.json
+    ports:
+      - "9000:9000"
+  client1:
+    build: .
+    command: ["python", "clientemulator.py"]
+    depends_on:
+      - server
+    networks:
+      - ticsnet
+  client2:
+    build: .
+    command: ["python", "clientemulator.py"]
+    depends_on:
+      - server
+    networks:
+      - ticsnet
+networks:
+  ticsnet:
+    driver: bridge 
